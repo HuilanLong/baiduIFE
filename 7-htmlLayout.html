@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="head">
+      <div class="head-content">
+        <div class="logo">Logo</div>
+        <div class="linkList">
+          <a class="hdLink">Github</a>
+          <a class="hdLink">Register</a>
+          <a class="hdLink">Login</a>
+        </div>
+      </div>
+    </div>
+    <div class="banner">
+      <div class="img-list">
+        <div class="bt-img unSelectedImg">1</div>
+        <div class="bt-img selectedImg">2</div>
+        <div class="bt-img unSelectedImg">3</div>
+        <div class="bt-img unSelectedImg">4</div>
+      </div>
+    </div>
+    <div class="body">
+      <div class="nav"></div>
+      <div class="content">
+        <div class="content-nav-list">
+          <div class="content-nav-switch selectNav">HOME</div>
+          <div class="content-nav-switch">PROFILE</div>
+          <div class="content-nav-switch">ABOUT</div>
+        </div>
+        <div class="sep-line"></div>
+        <div class="content-part-list">
+          <div class="content-part narrowBox">
+            This is Content1This is Content1This is Content1This is Content1This
+            is Content1This is Content1This is Content1
+          </div>
+          <div class="content-part wideBox">Maybe Content2</div>
+          <div class="content-part wideBox">Content3</div>
+          <div class="content-part wideBox">Content4</div>
+          <div class="content-part narrowBox">Content5</div>
+          <div class="content-part narrowBox">Content6</div>
+          <div class="content-part narrowBox">Content7</div>
+          <div class="content-part wideBox">Content8</div>
+          <div class="content-part narrowBox">Content9</div>
+          <div class="content-part wideBox">Content10</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">@ 2018 ife.baidu.com</div>
+    <style>
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+      .head {
+        width: 100%;
+        background-color: rgb(49, 46, 46);
+        height: 48px;
+      }
+      .head-content {
+        color: white;
+        height: 100%;
+        margin: 0 120px;
+        overflow: hidden;
+      }
+      .head-content .logo {
+        float: left;
+        font: 32px;
+        position: relative;
+        top: 15px;
+      }
+      .head-content .linkList {
+        float: right;
+        position: relative;
+        top: 5px;
+      }
+      .head-content .linkList .hdLink {
+        margin-left: 8px;
+        font-size: 7px;
+        text-decoration: underline;
+      }
+
+      .banner {
+        background-color: rgb(7, 187, 7);
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .banner .img-list {
+        position: absolute;
+        bottom: 5px;
+        right: 120px;
+      }
+
+      .img-list .bt-img {
+        float: left;
+        margin-right: 2px;
+        height: 24px;
+        width: 20px;
+        background-color: rgb(183, 230, 183);
+        color: rgb(150, 150, 150);
+        border: 1px solid rgb(150, 150, 150);
+        font-size: 5px;
+        text-align: center;
+        line-height: 24px;
+        position: relative;
+      }
+      .img-list .unSelectedImg {
+        bottom: -6px;
+      }
+      .img-list .selectedImg {
+        background-color: rgb(225, 248, 225);
+        padding-top: 6px;
+        height: 30px;
+      }
+
+      .body {
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .body .nav {
+        float: left;
+        width: 150px;
+        margin-top: 42px;
+        border-top: 1px solid rgb(214, 214, 214);
+      }
+
+      .body .content {
+        float: left;
+        width: 100%;
+        margin-left: 150px;
+        position: relative;
+        top: -42px;
+      }
+      .content .content-nav-list {
+        height: 37px;
+        width: 100%;
+        margin-top: 5px;
+        overflow: hidden;
+      }
+      .content .content-nav-list .content-nav-switch {
+        height: 37px;
+        float: left;
+        /* margin-top: 20px; */
+        border: 1px solid rgb(214, 214, 214);
+        border-bottom: 1px solid white;
+        border-radius: 10px;
+        width: 70px;
+        background-color: rgb(235, 232, 232);
+        color: grey;
+        text-align: center;
+        line-height: 37px;
+        position: relative;
+        bottom: -8px;
+        font-size: 7px;
+      }
+
+      .content .content-nav-list .selectNav {
+        background-color: white;
+      }
+
+      .content .sep-line {
+        margin-left: 70px;
+        height: 1px;
+        margin-top: -1px;
+        border-bottom: 1px solid rgb(214, 214, 214);
+      }
+      .content .content-part-list {
+        width: 100%;
+        margin-right: 80px;
+        overflow: hidden;
+      }
+      .content .content-part-list .content-part {
+        /* width: 120px; */
+        height: 105px;
+        float: left;
+        margin-top: 7px;
+        margin-right: 7px;
+        border: 1px solid rgb(214, 214, 214);
+        text-align: center;
+        font-size: 7px;
+        color: gray;
+      }
+
+      .content .content-part-list .wideBox {
+        width: 260px;
+      }
+
+      .content .content-part-list .narrowBox {
+        width: 180px;
+      }
+
+      .footer {
+        width: 100%;
+        height: 75px;
+        background-color: rgb(104, 103, 103);
+        color: white;
+        font-size: 4px;
+        text-align: center;
+        padding-top: 15px;
+      }
+    </style>
+  </body>
+</html>
