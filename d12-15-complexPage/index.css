@@ -1,0 +1,673 @@
+@import url("http://coding.imweb.io/demo/reset.css");
+
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  flex-wrap: nowrap;
+  color: rgba(5, 5, 5, 0.61);
+  font-family: -apple-system, BlinkMacSystemFont;
+  background-color: white;
+}
+
+/*最左侧导航栏*/
+.navi-bar {
+  width: 70px;
+  height: 100%;
+  flex-shrink: 0;
+  background-color: rgb(19, 28, 44);
+  border: none;
+}
+
+/*导航项*/
+.navi-bar .navi-item {
+  width: 46px;
+  height: 46px;
+  border-radius: 24px;
+  border: none;
+  margin: 20px 12px 0 12px;
+  background-position: center;
+  background-size: cover;
+  background-color: rgb(19, 28, 44);
+}
+
+.navi-bar .navi-item:nth-child(1) {
+  background-image: url(./img/Item\ 1.png);
+}
+
+.navi-bar .navi-item:nth-child(2) {
+  background-image: url(./img/Item\ 2.png);
+}
+
+.navi-bar .navi-item:nth-child(3) {
+  background-image: url(./img/Item\ 3.png);
+}
+
+.navi-bar .navi-item:nth-child(4) {
+  background-image: url(./img/Add\ App.png);
+}
+
+/**设置键*/
+.navi-bar .navi-settings {
+  position: fixed;
+  left: 10px;
+  bottom: 18px;
+  width: 50px;
+  height: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navi-bar .navi-settings button {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(19, 28, 44);
+  background-position: center;
+  background-size: cover;
+  border: none;
+}
+
+.navi-bar .navi-settings button:nth-child(1) {
+  background-image: url(./img/Grid.png);
+}
+
+.navi-bar .navi-settings button:nth-child(2) {
+  background-image: url(./img/Settings.png);
+}
+
+/**左侧控制面板*/
+.settings {
+  width: 200px;
+  height: 100%;
+  flex-shrink: 0;
+  background-color: rgb(29, 50, 78);
+}
+
+.setting-list {
+  margin: 20px 25px 0 25px;
+  width: 150px;
+  border-bottom: 1px solid rgb(37, 60, 90);
+  font-size: 10px;
+}
+/**/
+.setting-list .setting-title {
+  position: relative;
+  width: 100%;
+  margin-bottom: 12px;
+  color: rgb(97, 113, 148);
+  font-weight: bolder;
+}
+/*设置按钮*/
+.setting-list .setting-title::after {
+  width: 12px;
+  height: 12px;
+  content: "";
+  background-image: url(./img/Settings.png);
+  background-size: cover;
+  position: absolute;
+  right: 0;
+}
+
+.setting-list .setting-item {
+  margin-bottom: 12px;
+  color: white;
+  width: 100%;
+  position: relative;
+  display: block;
+}
+.setting-list:last-child {
+  border-bottom: none;
+}
+
+.setting-list .sales-msg::after {
+  content: "54";
+  display: block;
+  height: 100%;
+  width: 25px;
+  border-radius: 8px;
+  background-color: rgb(51, 163, 228);
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.setting-list .new-msg::before {
+  content: "";
+  height: 4px;
+  width: 2px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-color: rgb(51, 163, 228);
+  position: absolute;
+  display: block;
+  left: -25px;
+  top: 50%;
+}
+
+.setting-list .new-msg::after {
+  content: "21";
+  display: block;
+  height: 100%;
+  width: 25px;
+  border-radius: 8px;
+  background-color: rgb(51, 163, 228);
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.setting-list .warning-msg::after {
+  content: "!";
+  display: block;
+  height: 100%;
+  width: 18px;
+  border-radius: 50%;
+  background-color: red;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: auto;
+  text-align: center;
+}
+
+.settings .goal－revenue {
+  position: fixed;
+  left: 95px;
+  bottom: 10px;
+  width: 150px;
+  height: 30px;
+  color: white;
+  font-size: 7px;
+  border-bottom: 4px solid rgb(49, 61, 73);
+  border-radius: 2px;
+  text-align: center;
+}
+
+.settings .goal－revenue .goal,
+.settings .goal－revenue .revenue {
+  display: inline-block;
+}
+
+.settings .goal－revenue .goal {
+  margin-right: 2px;
+}
+
+.settings .prograss {
+  border-top: 2px solid rgb(170, 12, 233);
+  border-bottom: 2px solid rgb(170, 12, 233);
+  border-radius: 2px;
+  position: absolute;
+  height: 0;
+  bottom: -4px;
+  width: 50px;
+}
+
+/***右侧Message内容区***/
+.message {
+  min-width: 400px;
+  height: 100%;
+  overflow: auto;
+}
+/* .message::after {
+  content: "";
+  display: block;
+  clear: both;
+} */
+/**用户头像**/
+.message .user-msg {
+  height: 50px;
+  position: relative;
+  border-bottom: 1px solid rgb(230, 228, 228);
+}
+
+.message .user-msg .msg-title {
+  margin: 3px 15px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 18px;
+}
+.message .user-msg .msg-user {
+  position: fixed;
+  top: 3px;
+  right: 3px;
+  height: 44px;
+  width: 180px;
+  font-size: 10px;
+  background-color: white;
+  z-index: 100;
+}
+.message .user-msg .msg-user::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 14px;
+  height: 8px;
+  width: 8px;
+  border-bottom: 2px solid gray;
+  border-right: 2px solid gray;
+  transform: rotate(45deg);
+}
+
+.message .user-msg .user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.message .user-msg .user-info {
+  display: inline-block;
+  height: 44px;
+  width: 80px;
+  vertical-align: top;
+}
+
+.message .user-info .user-name,
+.message .user-info .user-title {
+  margin-top: 6px;
+}
+
+.message .user-info .user-name {
+  color: rgb(51, 163, 228);
+  font-weight: bold;
+}
+
+.message .msg-list {
+  width: 280px;
+  float: left;
+  border-right: 1px solid rgb(230, 228, 228);
+}
+
+/**搜索框**/
+.message .msg-list .msg-search {
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid rgb(230, 228, 228);
+  position: relative;
+}
+.message .msg-search .search-box {
+  margin: 10px 20px;
+  border: 1px solid rgb(230, 228, 228);
+  border-radius: 2px;
+  height: 30px;
+  width: 240px;
+}
+.message .msg-search .search-icon {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  right: 30px;
+  top: 15px;
+}
+
+/**消息概览列表**/
+.message .msg-list .msg-summary {
+  width: 100%;
+}
+
+/**单个消息概览**/
+.message .msg-list .msg-summary .msg-item {
+  position: relative;
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid rgb(230, 228, 228);
+  font-size: 10px;
+  padding: 10px 20px 18px 22px;
+}
+
+.message .msg-list .msg-summary .msg-item:nth-child(1)::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  left: -1px;
+  top: 0;
+  border-left: 4px solid rgb(51, 163, 228);
+}
+
+/***消息头像**/
+.message .msg-list .msg-user-avatar {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+/***/
+.message .msg-list .contactor {
+  height: 40px;
+  /* width: 200px; */
+  display: inline-block;
+  vertical-align: top;
+}
+
+.message .msg-list .contactor > div {
+  height: 20px;
+  line-height: 20px;
+}
+
+.contactor-name {
+  font-size: 12px;
+  font-weight: bolder;
+  display: inline-block;
+}
+.msg-list .contactor .contactor-company {
+  color: rgb(170, 169, 169);
+}
+
+[data-select="selected"] .contactor .contactor-name {
+  color: rgb(51, 163, 228);
+}
+
+[data-select="selected"] .contactor-name::before {
+  content: "";
+  height: 6px;
+  width: 6px;
+  display: inline-block;
+  border-radius: 3px;
+  background-color: rgb(51, 163, 228);
+  margin: auto 4px;
+}
+
+.msg-list .msg-date {
+  float: right;
+  width: 70px;
+  height: 20px;
+  line-height: 20px;
+  text-align: right;
+  color: rgba(0, 0, 0, 0.45);
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.msg-list .msg-content {
+  position: relative;
+  line-height: 15px;
+  margin-top: 8px;
+  color: gray;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+[data-select="selected"] .msg-content::after {
+  content: "4";
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: rgb(51, 163, 228);
+  font-size: 8px;
+  text-align: center;
+  color: white;
+  position: absolute;
+  display: block;
+  margin-left: 10px;
+  right: 0;
+  top: 7px;
+}
+
+.message .msg-list::after {
+  content: "";
+  clear: both;
+}
+
+/***消息内容****/
+.msg-detail {
+  font-size: 10px;
+  margin-left: 281px;
+  min-width: 400px;
+  width: auto;
+}
+
+/**消息内容头部，包含发送消息人，添加、分享、删除联系人，消息分页**/
+.msg-detail .msg-head {
+  height: 50px;
+  position: relative;
+  padding: 0 20px;
+}
+
+.msg-detail .msg-head .contactor-name,
+.msg-detail .msg-head .contactor-option,
+.msg-detail .msg-head .msg-pages {
+  display: inline-block;
+}
+
+.msg-detail .msg-head .contactor-name {
+  height: 50px;
+  line-height: 50px;
+  width: 100px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.msg-detail .msg-head .contactor-name::after {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgb(29, 204, 6);
+  margin-left: 7px;
+  vertical-align: middle;
+}
+
+/*添加、分享、删除联系人**/
+.msg-detail .msg-head .contactor-option {
+  height: 30px;
+  width: 105px;
+  margin: 10px 10px;
+  position: absolute;
+  right: 160px;
+}
+
+.msg-head .contactor-option > button {
+  height: 100%;
+  width: calc(100% / 3);
+  float: left;
+  border: 1px solid rgb(170, 169, 169);
+  border-right: none;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  background-color: rgb(242, 247, 248);
+}
+.msg-head .contactor-option > button:nth-child(1) {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-image: url(./img/User\ icon.png);
+}
+.msg-head .contactor-option > button:nth-child(2) {
+  background-image: url(./img/Upload\ icon.png);
+}
+.msg-head .contactor-option > button:last-child {
+  border-right: 1px solid rgb(170, 169, 169);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-image: url(./img/Trash\ icon.png);
+}
+
+/**消息分页*/
+.msg-detail .msg-head .msg-pages {
+  height: 30px;
+  width: 160px;
+  margin: 10px auto;
+  position: absolute;
+  right: 0;
+  border-left: 1px solid rgb(170, 169, 169);
+}
+
+.msg-pages .page-num,
+.msg-pages .turn-page {
+  display: inline-block;
+  height: 100%;
+}
+
+.msg-pages .page-num {
+  display: inline-block;
+  text-align: center;
+  vertical-align: super;
+  margin: 0 7px 0 15px;
+  font-size: 14px;
+}
+
+.msg-pages .turn-page button {
+  border: 1px solid rgb(170, 169, 169);
+  border-right: none;
+  height: 100%;
+  width: 40px;
+  float: left;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto;
+  background-color: rgb(242, 247, 248);
+}
+
+.msg-pages .turn-page button:nth-child(1) {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-image: url(./img/Arrow\ left.png);
+}
+
+.msg-pages .turn-page button:nth-child(2) {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-right: 1px solid rgb(170, 169, 169);
+  background-image: url(./img/Arrow\ right.png);
+}
+
+/**过往聊天记录*/
+.msg-detail .conversations {
+  padding: 0 20px 25px 20px;
+  border-top: 1px solid rgb(230, 228, 228);
+  position: relative;
+  left: -1px;
+  top: -1px;
+}
+
+/* .conversations:last-child {
+  border: 3px solid blue;
+} */
+
+.msg-detail .conversations:nth-child(1) {
+  border-top: 1px solid blue;
+}
+
+.msg-detail .conversations .conversation-item {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.conversations .conversation-item .msg-user-avatar {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.conversations .conversation-item .conversation-content {
+  margin-left: 10px;
+}
+
+.conversations .conversation-item .conversation-time {
+  font-size: 12px;
+  display: inline-block;
+  margin-left: 8px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.conversations .message-datetime {
+  padding: 0 10px;
+  height: 20px;
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  transform: translateX(-50%);
+  background-color: white;
+}
+
+.conversations .conversation-item .conversation-img {
+  height: 80px;
+  width: 120px;
+  margin-right: 10px;
+  display: inline-block;
+  border-radius: 3px;
+  margin-top: 8px;
+  position: relative;
+}
+
+.conversations .conversation-item .img-sky {
+  background-image: url(./img/Photo.png);
+}
+
+.conversations .conversation-item .img-mountain {
+  background-image: url(./img/Photo1.png);
+}
+
+.conversations .conversation-item .conversation-img:hover::after {
+  content: "";
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.3);
+  background-image: url(./img/Open\ icon.png);
+  background-size: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: block;
+  position: absolute;
+  left: 45px;
+  top: 25px;
+}
+
+.reply-box {
+  width: 100%;
+  padding: 20px;
+}
+
+.reply-box .add {
+  /* float: left; */
+  height: 40px;
+  width: 5%;
+  display: inline-block;
+  border: 1px solid rgb(170, 169, 169);
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  background-color: rgb(242, 247, 248);
+  background-image: url(./img/Add\ icon.png);
+  background-size: 30%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.reply-box .msg-reply {
+  /* margin-left: 39px; */
+  height: 40px;
+  width: 92%;
+  display: inline-block;
+  position: relative;
+  left: -3px;
+  border: 1px solid rgb(170, 169, 169);
+  border-left: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
