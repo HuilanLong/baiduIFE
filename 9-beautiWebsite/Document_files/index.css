@@ -1,0 +1,333 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: none;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/*最左侧导航栏*/
+.navi-bar {
+  width: 70px;
+  flex-shrink: 0;
+  background-color: rgb(19, 28, 44);
+  border: none;
+}
+
+/*导航项*/
+.navi-bar .navi-item {
+  width: 46px;
+  height: 46px;
+  border-radius: 24px;
+  border: none;
+  margin: 20px 12px 0 12px;
+  background-position: center;
+  background-size: cover;
+  background-color: rgb(19, 28, 44);
+}
+
+.navi-bar .navi-item:nth-child(1) {
+  background-image: url(./img/Item\ 1.png);
+}
+
+.navi-bar .navi-item:nth-child(2) {
+  background-image: url(./img/Item\ 2.png);
+}
+
+.navi-bar .navi-item:nth-child(3) {
+  background-image: url(./img/Item\ 3.png);
+}
+
+.navi-bar .navi-item:nth-child(4) {
+  background-image: url(./img/Add\ App.png);
+}
+
+/**设置键*/
+.navi-bar .navi-settings {
+  position: fixed;
+  left: 10px;
+  bottom: 18px;
+  width: 50px;
+  height: 12px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navi-bar .navi-settings button {
+  width: 12px;
+  height: 12px;
+  background-color: rgb(19, 28, 44);
+  background-position: center;
+  background-size: cover;
+  border: none;
+}
+
+.navi-bar .navi-settings button:nth-child(1) {
+  background-image: url(./img/Grid.png);
+}
+
+.navi-bar .navi-settings button:nth-child(2) {
+  background-image: url(./img/Settings.png);
+}
+
+/**左侧控制面板*/
+.settings {
+  width: 200px;
+  flex-shrink: 0;
+  background-color: rgb(29, 50, 78);
+}
+
+.setting-list {
+  margin: 20px 25px 0 25px;
+  width: 150px;
+  border-bottom: 1px solid rgb(37, 60, 90);
+  font-size: 10px;
+}
+/**/
+.setting-list .setting-title {
+  position: relative;
+  width: 100%;
+  margin-bottom: 12px;
+  color: rgb(97, 113, 148);
+  font-weight: bolder;
+}
+/*设置按钮*/
+.setting-list .setting-title::after {
+  width: 12px;
+  height: 12px;
+  content: "";
+  background-image: url(./img/Settings.png);
+  background-size: cover;
+  position: absolute;
+  right: 0;
+}
+
+.setting-list .setting-item {
+  margin-bottom: 12px;
+  color: white;
+  width: 100%;
+  position: relative;
+}
+
+.setting-list:last-child {
+  border-bottom: none;
+}
+
+.settings .goal－revenue {
+  position: fixed;
+  left: 95px;
+  bottom: 10px;
+  width: 150px;
+  height: 30px;
+  color: white;
+  font-size: 8px;
+  border-bottom: 4px solid rgb(49, 61, 73);
+  border-radius: 2px;
+  text-align: center;
+}
+
+.settings .goal－revenue .goal,
+.settings .goal－revenue .revenue {
+  display: inline-block;
+}
+
+.settings .goal－revenue .goal {
+  margin-right: 6px;
+}
+
+.settings .prograss {
+  border-top: 2px solid rgb(170, 12, 233);
+  border-bottom: 2px solid rgb(170, 12, 233);
+  border-radius: 2px;
+  position: absolute;
+  height: 0;
+  bottom: -4px;
+  width: 50px;
+}
+
+/***右侧Message内容区***/
+.message {
+  min-width: 400px;
+}
+
+/**用户头像**/
+.message .user-msg {
+  height: 50px;
+  position: relative;
+  border-bottom: 1px solid rgb(230, 228, 228);
+}
+
+.message .user-msg .msg-title {
+  margin: 3px 15px;
+  height: 44px;
+  line-height: 44px;
+  font-size: 18px;
+}
+.message .user-msg .msg-user {
+  position: fixed;
+  top: 10px;
+  right: 3px;
+  height: 44px;
+  width: 180px;
+  font-size: 10px;
+}
+.message .user-msg .msg-user::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 14px;
+  height: 8px;
+  width: 8px;
+  border-bottom: 2px solid gray;
+  border-right: 2px solid gray;
+  transform: rotate(45deg);
+}
+
+.message .user-msg .user-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+.message .user-msg .user-info {
+  display: inline-block;
+  height: 44px;
+  width: 80px;
+  vertical-align: top;
+}
+
+.message .user-info .user-name,
+.message .user-info .user-title {
+  margin-top: 6px;
+}
+
+.message .user-info .user-name {
+  color: rgb(0, 110, 255);
+  font-weight: bold;
+}
+
+.message .msg-list {
+  width: 300px;
+  float: left;
+  border-right: 1px solid rgb(230, 228, 228);
+}
+
+/**搜索框**/
+.message .msg-list .msg-search {
+  height: 50px;
+  width: 100%;
+  border-bottom: 1px solid rgb(230, 228, 228);
+  position: relative;
+}
+.message .msg-search .search-box {
+  margin: 10px 20px;
+  border: 1px solid rgb(230, 228, 228);
+  border-radius: 2px;
+  height: 30px;
+  width: 240px;
+}
+.message .msg-search .search-icon {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  right: 30px;
+  top: 15px;
+}
+
+/**消息概览列表**/
+.message .msg-list .msg-summary {
+  width: 100%;
+}
+
+/**单个消息概览**/
+.message .msg-list .msg-summary .msg-item {
+  position: relative;
+  height: 100px;
+  width: 100%;
+  border-bottom: 1px solid rgb(230, 228, 228);
+  /* overflow: hidden; */
+  font-size: 10px;
+  padding: 10px 10px 18px 22px;
+}
+
+.message .msg-list .msg-summary .msg-item:nth-child(1)::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  position: absolute;
+  left: -1px;
+  top: 0;
+  border-left: 4px solid rgb(0, 110, 255);
+}
+
+/***消息头像**/
+.message .msg-list .msg-user-avatar {
+  height: 40px;
+  width: 40px;
+  margin-right: 10px;
+  display: inline-block;
+}
+
+/***/
+.message .msg-list .contactor {
+  height: 40px;
+  /* width: 200px; */
+  display: inline-block;
+  vertical-align: top;
+}
+
+.message .msg-list .contactor > div {
+  height: 20px;
+  line-height: 20px;
+}
+
+.msg-list .contactor .contactor-name {
+  font-size: 12px;
+  font-weight: bolder;
+}
+.msg-list .contactor .contactor-company {
+  color: rgb(170, 169, 169);
+}
+
+[data-select="selected"] .contactor .contactor-name {
+  color: rgb(0, 110, 255);
+}
+
+[data-select="selected"] .contactor-name::before {
+  content: "";
+  height: 6px;
+  width: 6px;
+  display: inline-block;
+  border-radius: 3px;
+  background-color: rgb(0, 110, 255);
+  margin: auto 4px;
+}
+
+.msg-list .msg-content {
+  width: 100%;
+  line-height: 15px;
+  margin-top: 8px;
+  color: gray;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+/***消息内容****/
+msg-detail {
+  float: left;
+  font-size: 10px;
+}

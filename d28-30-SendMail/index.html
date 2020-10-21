@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link href="./index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+    <script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+        var HtmlUtil = {
+            /*1.用浏览器内部转换器实现html转码*/
+            htmlEncode: function (html) {
+                //1.首先动态创建一个容器标签元素，如DIV
+                var temp = document.createElement("div");
+                //2.然后将要转换的字符串设置为这个元素的innerText(ie支持)或者textContent(火狐，google支持)
+                (temp.textContent != undefined) ? (temp.textContent = html) : (temp.innerText = html);
+                //3.最后返回这个元素的innerHTML，即得到经过HTML编码转换的字符串了
+                var output = temp.innerHTML;
+                temp = null;
+                return output;
+            },
+            /*2.用浏览器内部转换器实现html解码*/
+            htmlDecode: function (text) {
+                //1.首先动态创建一个容器标签元素，如DIV
+                var temp = document.createElement("div");
+                //2.然后将要转换的字符串设置为这个元素的innerHTML(ie，火狐，google都支持)
+                temp.innerHTML = text;
+                //3.最后返回这个元素的innerText(ie支持)或者textContent(火狐，google支持)，即得到经过HTML解码的字符串了。
+                var output = temp.innerText || temp.textContent;
+                temp = null;
+                return output;
+            }
+
+        };
+        var index = 0;
+        // 邮箱后缀List参考
+        var postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+        $("#email-input").on("keyup", function (e) {
+            if (e.keyCode !== 13) {
+                $("#email-sug-wrapper").empty();
+                let inputArry = getUsrInput();
+                appendLiNodes(inputArry);
+                switchUl(inputArry[0]);
+            }
+
+        });
+
+        $("#email-input").on("keydown", function (e) {
+            console.log(e);
+            let list = $('li');
+            let keyCode = e.keyCode;
+            let len = list.length;
+            console.log("listLen:", len);
+            if (len > 0) {
+                switch (keyCode) {
+                    case 38://up
+                        index = (index <= 0 ? len - 1 : index - 1);
+                        break;
+                    case 40://down
+                        console.log("index before:", index);
+                        index = (index >= len - 1 ? 0 : index + 1);
+                        console.log("index after:", index);
+                        break;
+                    case 13://Enter
+                        let input = list[index].innerText;
+                        $('#email-input').val(input);
+                        hiddenUl();
+                        index = 0;
+                        break;
+                }
+            }
+        });
+
+        $("ul").on("mouseover", function (e) {
+            let liNode = e.target;
+            liNode.style.background = 'rgb(243, 165, 159)';
+        })
+
+        $("ul").on("mouseout", function (e) {
+            let liNode = e.target;
+            liNode.style.background = 'white';
+        })
+
+        $("ul").on("click", function (e) {
+            let liNode = e.target;
+            let autoInput = HtmlUtil.htmlEncode(liNode.innerText);
+            $('#email-input').val(HtmlUtil.htmlDecode(autoInput));
+            hiddenUl();
+
+        })
+
+        function getUsrInput() {
+            let input = HtmlUtil.htmlEncode($("#email-input").val().trim());
+            let inputArry = input.split("@");
+            return inputArry;
+        }
+
+        function generateUlList(inputArry) {
+            let len = inputArry.length;
+            let liNodeHtml = '';
+            let matchPostFix = [];
+            if (len > 1 && inputArry[1]) {
+                for (let i = 0; i < postfixList.length; i++) {
+                    if (postfixList[i].indexOf(inputArry[1]) == 0) {
+                        matchPostFix.push(postfixList[i]);
+                    }
+                }
+                if (matchPostFix.length <= 0) {
+                    matchPostFix = postfixList;
+                    inputArry[0] = inputArry.join('@');
+                }
+            } else {
+                matchPostFix = postfixList;
+            };
+            if (inputArry[0]) {
+                for (var postEnd in matchPostFix) {
+                    let liContent = inputArry[0] + "@" + matchPostFix[postEnd];
+                    liNodeHtml += "<li class='wrapper-item'>" + liContent + "</li>";
+                }
+            }
+            return liNodeHtml;
+        }
+
+        //将提示内容添加到email-sug-wrapper中
+        function appendLiNodes(inputArry) {
+            let htmlStr = generateUlList(inputArry);
+            if (htmlStr) {
+                $("#email-sug-wrapper").append(htmlStr);
+            };
+            if ($('li')[index]) {
+                $('li')[index].style.backgroundColor = "rgb(213, 243, 188)";
+            }
+        }
+        //隐藏email-sug-wrapper
+        function hiddenUl() {
+            $("#email-sug-wrapper").hide();
+        }
+        //显示email-sug-wrapper
+        function displayUl() {
+            $("#email-sug-wrapper").show();
+        };
+        //控制email-sug-wrapper的显示/隐藏状态
+        function switchUl(input) {
+            if (!input) {
+                hiddenUl();
+            } else {
+                displayUl();
+            }
+        }
+    </script>
+</body>
+
+</html>

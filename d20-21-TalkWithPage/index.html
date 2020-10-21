@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input id="tsts" type="text">
+    <button id="submit-btn" onclick="showInputId()">Submit</button>
+    <script>
+        function showInputId() {
+            var inputNodes = document.getElementsByTagName("input");
+            var input = inputNodes[0];
+            console.dir(input.id);
+        } 
+    </script>
+</body>
+
+</html>

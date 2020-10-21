@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <label>Number A:<input id="radio-a" type="radio" name="math-obj" value="a"></label><input id="num-a"
+            type="text">
+        <label>Number B:<input id="radio-b" type="radio" name="math-obj" value="b"></label><input id="num-b"
+            type="text">
+    </div>
+    <div>
+        <button class="isNumberBtn">判断当前选中的输入框输入内容是否为数字</button>
+        <button class="roundFltNumBtn">把 A 四舍五入为 B 个小数位数的数字</button>
+        <button class="absNumBtn">当前选中数字的绝对值</button>
+        <button class="ceilNumBtn">对当前选中的数字进行上舍入</button>
+        <button class="floorNumBtn">对当前选中的数字进行下舍入</button>
+        <button class="roundNumBt">把当前选中的数字四舍五入为最接近的整数</button>
+        <button class="maxValBtn">返回 A 和 B 中的最高值</button>
+        <button class="minValBtn">返回 A 和 B 中的最低值</button>
+    </div>
+    <p id="result"></p>
+</body>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script>
+    $("button").on('click', function (e) {
+        // console.dir(this);
+        var btClass = this.className;
+        console.log("btClass:", btClass);
+        var num1 = Number($('#num-a').val());
+        var num2 = Number($('#num-b').val());
+        console.log("num1:", num1);
+        console.log("num2:", num2);
+        var selectVal = ($('input[type="radio"]:checked')[0].value) == "a" ? num1 : num2;
+        console.log("selectValue:", selectVal);
+        var result = '';
+        switch (btClass) {
+            case 'isNumberBtn':
+                result = !isNaN(selectVal);
+                break;
+            case 'roundFltNumBtn':
+                if (!num1 || !num2) {
+                    result = "error:input is not number!"
+                    break;
+                }
+                let unSelectVal = 0;
+                if (selectVal == num1) {
+                    unSelectVal = parseInt(num2);
+                } else {
+                    unSelectVal = parseInt(num1);
+                }
+                result = selectVal.toFixed(unSelectVal);
+                break;
+            case 'absNumBtn':
+                if (!selectVal) {
+                    result = "error:input is not number!"
+                    break;
+                }
+                result = parseInt(selectVal);
+                break;
+            case 'ceilNumBtn':
+                if (!selectVal) {
+                    result = "error:input is not number!"
+                    break;
+                }
+                result = Math.ceil(selectVal);
+                break;
+            case 'floorNumBtn':
+                if (!selectVal) {
+                    result = "error:input is not number!"
+                    break;
+                }
+                result = Math.floor(selectVal);
+                break;
+            case 'roundNumBt':
+                if (!selectVal) {
+                    result = "error:input is not number!"
+                    break;
+                }
+                result = Math.round(selectVal);
+                break;
+            case 'maxValBtn':
+                if (!num1 || !num2) {
+                    result = "error:input is not number!"
+                    break;
+                }
+                result = Math.max(num1, num2);
+                break;
+            case 'minValBtn':
+                if (!num1 || !num2) {
+                    result = "error:input is not number!"
+                    break;
+                }
+                result = Math.min(num1, num2);
+                break;
+            default:
+                if (!num1 || !num2 || !selectVal) {
+                    result = "error:input is not number!"
+                }
+
+        }
+        console.log("result:", result);
+        console.dir($("#result"));
+        $("#result")[0].innerText = result.toString();
+    })
+
+</script>
+
+</html>
